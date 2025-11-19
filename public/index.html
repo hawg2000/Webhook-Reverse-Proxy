@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Webhook Adapter</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"
+  />
+</head>
+<body class="bg-light">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">Webhook <b>Adapter</b></a>
+    </div>
+  </nav>
+
+  <main class="container my-4">
+    <!-- Create Card -->
+    <div class="card shadow-sm mb-4">
+      <div class="card-header">
+        <h5 class="mb-0">Neuen Webhook-Adapter anlegen</h5>
+      </div>
+      <div class="card-body">
+        <form id="webhookForm" class="row g-3">
+          <div class="col-md-6">
+            <label for="name" class="form-label">Adapter Name *</label>
+            <input type="text" class="form-control" id="name" name="name"
+                   placeholder="Enter webhook adapter name" required />
+          </div>
+          <div class="col-md-6">
+            <label for="description" class="form-label">Description</label>
+            <input type="text" class="form-control" id="description" name="description"
+                   placeholder="description" />
+          </div>
+          <div class="col-12">
+            <label for="targets" class="form-label">Target URLs (comma separated)</label>
+            <textarea class="form-control" id="targets" name="targets" rows="3"
+                      placeholder="https://example.com/webhook, http://test.de/webhook"></textarea>
+          </div>
+          <div class="col-12 d-flex gap-2">
+            <button type="submit" class="btn btn-primary">Add new Webhook Adapter</button>
+            <button type="reset" class="btn btn-outline-secondary">Reset</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Table Card -->
+    <div class="card shadow-sm">
+      <div class="card-header d-flex align-items-center justify-content-between">
+        <h5 class="mb-0">Webhook Adapter</h5>
+        <button id="reloadBtn" class="btn btn-outline-primary btn-sm">Reload</button>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table align-middle" id="webhookTable">
+            <thead class="table-light">
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Targets</th>
+                <th>URL</th>
+                <th>Enabled</th>
+                <th class="text-end">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="webhookTbody">
+              <!-- rows injected by script.js -->
+            </tbody>
+          </table>
+        </div>
+        <div id="emptyState" class="text-center text-muted d-none">
+          No adapters yet.
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Edit Modal -->
+  <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content shadow">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Webhook Adapter</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"
+                  aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="editForm" class="row g-3">
+            <input type="hidden" id="edit_id" />
+            <div class="col-md-6">
+              <label class="form-label" for="edit_name">Name</label>
+              <input id="edit_name" class="form-control" type="text" required />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="edit_description">Description</label>
+              <input id="edit_description" class="form-control" type="text" />
+            </div>
+            <div class="col-12">
+              <label class="form-label" for="edit_targets">Targets (comma separated)</label>
+              <textarea id="edit_targets" class="form-control" rows="3"></textarea>
+            </div>
+            <div class="col-12 form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="edit_enabled" />
+              <label class="form-check-label" for="edit_enabled">Enabled</label>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button id="editSaveBtn" class="btn btn-primary">Save changes</button>
+          <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS Bundle -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
+
+  <script src="script.js"></script>
+</body>
+</html>

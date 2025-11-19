@@ -1,0 +1,35 @@
+[
+  {
+    "id": "58940a93-22a0-4021-98df-b56fc34302b5",
+    "createdAt": "2025-11-08T12:07:57.717Z",
+    "updatedAt": "2025-11-08T12:07:57.717Z",
+    "name": "asd",
+    "description": "asd",
+    "targets": [
+      "asd"
+    ]
+  },
+  {
+    "id": "5731d35d-6695-43ae-bf2a-9a7582c6ef43",
+    "url": "http://api.yp-it.de/webhook/0c0f6837-76d2-42f2-af8e-e84044a81d72",
+    "createdAt": "2025-11-08T12:10:07.626Z",
+    "updatedAt": "2025-11-08T12:10:07.626Z",
+    "name": "test",
+    "description": "asd",
+    "targets": [
+      "asd"
+    ]
+  },
+  {
+    "id": "03cd34bb-ffb4-4f74-81d3-7c304331f6e2",
+    "url": "http://api.yp-it.de/webhook/d8c347d1-9f4a-452e-a7e5-44989cd28196",
+    "createdAt": "2025-11-08T12:11:33.898Z",
+    "updatedAt": "2025-11-08T12:11:33.898Z",
+    "name": "unifi test",
+    "description": "test for unifi webhooks service",
+    "targets": [
+      "https://192.168.1.23/test",
+      "https://google.de"
+    ]
+  }
+]
